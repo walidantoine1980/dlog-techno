@@ -32,8 +32,11 @@ if os.path.isdir(frontend_dist):
     
     @app.get("/{catchall:path}")
     def serve_frontend(catchall: str):
-        file_path = os.path.join(frontend_dist, catchall)
-        if os.path.isfile(file_path):
+        # Prevent Path Traversal
+        safe_base = os.path.abspath(frontend_dist)
+        file_path = os.path.abspath(os.path.join(frontend_dist, catchall))
+        
+        if file_path.startswith(safe_base) and os.path.isfile(file_path):
             return FileResponse(file_path)
         return FileResponse(os.path.join(frontend_dist, "index.html"))
 else:

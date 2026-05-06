@@ -20,7 +20,8 @@ rm -rf node_modules package-lock.json dist
 
 # Install dependencies (forcing devDependencies)
 export NODE_ENV=development
-npm install --legacy-peer-deps
+npm cache clean --force
+npm install
 
 # Build the Vite application, capturing logs if it fails
 echo "Running Vite Build..."

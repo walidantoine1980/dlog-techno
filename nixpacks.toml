@@ -3,7 +3,6 @@ providers = ["node", "python"]
 [variables]
 NIXPACKS_NODE_VERSION = "22"
 NIXPACKS_PYTHON_VERSION = "3.11"
-PORT = "8000"
 
 [phases.install]
 cmds = []
@@ -14,4 +13,4 @@ cmds = [
 ]
 
 [start]
-cmd = "cd backend && /opt/venv/bin/python -m uvicorn app.main:app --host 0.0.0.0 --port $PORT"
+cmd = "cd backend && /opt/venv/bin/python -m uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}"

@@ -9,7 +9,7 @@ PORT = "8000"
 cmds = [
     "python -m venv /opt/venv",
     ". /opt/venv/bin/activate && cd backend && pip install -r requirements.txt",
-    "cd frontend && npm install --legacy-peer-deps"
+    "cd frontend && npm install --legacy-peer-deps --include=dev"
 ]
 
 [phases.build]

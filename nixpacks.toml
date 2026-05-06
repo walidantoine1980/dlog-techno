@@ -6,15 +6,11 @@ NIXPACKS_PYTHON_VERSION = "3.11"
 PORT = "8000"
 
 [phases.install]
-cmds = [
-    "python -m venv /opt/venv",
-    ". /opt/venv/bin/activate && cd backend && pip install -r requirements.txt",
-    "cd frontend && rm -rf package-lock.json node_modules && NODE_ENV=development npm install --legacy-peer-deps"
-]
+cmds = []
 
 [phases.build]
 cmds = [
-    "cd frontend && npm run build"
+    "bash build.sh"
 ]
 
 [start]
